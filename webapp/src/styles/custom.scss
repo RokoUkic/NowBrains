@@ -1,0 +1,142 @@
+@use "spacings";
+@use "colors";
+@use "responsive";
+@use "box-shadow";
+
+.mat-form-field {
+  border: 2px solid #5d6584;
+  border-radius: spacings.$xxs;
+  padding: 14px;
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+
+  .mat-form-field-infix {
+    border: none !important;
+  }
+
+  &.error {
+    border-color: colors.$fail;
+  }
+
+  &:has(input:focus) {
+    border-color: colors.$primary;
+
+    mat-label {
+      color: colors.$primary;
+    }
+  }
+
+  input {
+    background-color: transparent;
+  }
+
+  mat-label {
+    white-space: nowrap;
+  }
+}
+
+.mat-menu-panel {
+  background-color: white;
+}
+
+.mat-menu-item {
+  &:hover {
+    background-color: colors.$gray;
+  }
+}
+
+button {
+  background-color: colors.$primary;
+  color: white !important;
+  padding: 4px !important;
+
+  &:disabled {
+    background-color: colors.$gray;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input {
+  // &:autofill {
+  //   color: red !important;
+  // }
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+ul {
+  padding-left: 0;
+  margin: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+mat-spinner {
+  color: colors.$primary;
+}
+
+snack-bar-container {
+  background-color: colors.$success;
+  color: white;
+
+  &.snack-bar-error {
+    background-color: colors.$fail;
+  }
+}
+
+.mat-menu-panel {
+  @include box-shadow.light;
+}
+
+@include responsive.media-down("sm") {
+  .mat-table {
+    overflow: auto;
+    display: block;
+  }
+
+  td.mat-cell,
+  th.mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 0px spacings.$xs !important;
+    line-break: unset;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  .mat-row,
+  .mat-header-row {
+    display: table-row;
+  }
+
+  .mat-dialog-container {
+    padding: 0 !important;
+    height: fit-content !important;
+  }
+}

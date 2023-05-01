@@ -1,0 +1,62 @@
+@use "spacings";
+@use "responsive";
+@use "colors";
+
+app-generic-layout {
+  &.mobile {
+    display: none;
+  }
+
+  section {
+    h2 {
+      margin-bottom: spacings.$sm;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    & + span {
+      display: block;
+      font-size: 14px;
+      margin-top: spacings.$xs;
+
+      a {
+        color: colors.$primary;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .text-link {
+    cursor: pointer;
+    color: colors.$primary;
+  }
+}
+
+@include responsive.media-down("sm") {
+  app-generic-layout {
+    width: unset;
+
+    &.mobile {
+      display: block;
+    }
+
+    &.desktop {
+      display: none;
+    }
+
+    section {
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+}

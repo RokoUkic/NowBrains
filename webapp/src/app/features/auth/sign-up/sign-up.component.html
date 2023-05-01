@@ -1,0 +1,53 @@
+<app-generic-layout class="desktop" [width]="450">
+  <ng-template [ngTemplateOutlet]="signUpForm"></ng-template>
+</app-generic-layout>
+
+<app-generic-layout class="mobile">
+  <ng-template [ngTemplateOutlet]="signUpForm"></ng-template>
+</app-generic-layout>
+
+<ng-template #signUpForm>
+  <section>
+    <h2>Sign up Stock Trading account</h2>
+    <form [formGroup]="formGroup" (submit)="submit()">
+      <mat-form-field
+        [class.error]="
+          formGroup.controls.username.errors &&
+          formGroup.controls.username.touched
+        "
+      >
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <mat-form-field
+        [class.error]="
+          formGroup.controls.password.errors &&
+          formGroup.controls.password.touched
+        "
+      >
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+      <mat-form-field
+        [class.error]="
+          formGroup.controls.level.errors && formGroup.controls.level.touched
+        "
+      >
+        <mat-label>Level</mat-label>
+        <input matInput formControlName="level" />
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="formGroup.invalid || !formGroup.dirty"
+      >
+        Sign up
+      </button>
+    </form>
+    <span
+      >Already have an account? Login
+      <span class="text-link" (click)="goToLoginPage()">here</span></span
+    >
+  </section>
+</ng-template>

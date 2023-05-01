@@ -1,0 +1,23 @@
+@use "spacings";
+@use "responsive";
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  width: 940px;
+  margin: spacings.$md auto;
+  padding-bottom: spacings.$lg;
+
+  .row {
+    grid-column-end: span 12;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@include responsive.media-down("sm") {
+  .container {
+    width: unset;
+    margin: spacings.$sm spacings.$sm spacings.$md spacings.$sm;
+  }
+}
