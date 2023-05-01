@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 
 @Component({
   standalone: true,
@@ -6,5 +6,6 @@ import { Component } from '@angular/core'
     <img src="assets/images/loading.svg" />
   </div>`,
   styleUrls: ['./loading-indicator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingIndicatorComponent {}

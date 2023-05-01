@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
 @Component({
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common'
     </div>
   </div>`,
   styleUrls: ['./generic-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GenericLayoutComponent {
   @Input() width?: number
