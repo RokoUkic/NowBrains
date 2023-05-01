@@ -39,9 +39,9 @@ const findHashPassword = async (username: string): Promise<string> => {
   }
 }
 
-const findOne = async (condition: { username?: string }): Promise<IUser> => {
+const findOne = async (condition: { username?: string; refreshToken?: string }): Promise<IUser> => {
   try {
-    const user = await User.findOne(condition).exec()
+    const user = await User.findOne(condition, { hashPassword: 0, __v: 0 }).exec()
 
     if (!user) {
       throw new Error('Not found')

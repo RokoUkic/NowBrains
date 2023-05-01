@@ -21,6 +21,13 @@ const unauthorized = (res: Response, message: string) => {
   })
 }
 
+const expiredAccessToken = (res: Response) => {
+  return res.status(498).json({
+    status: 'fail',
+    error: 'Token is expired',
+  })
+}
+
 const success = (res: Response, data: unknown) => {
   return res.status(200).json({
     status: 'success',
@@ -33,4 +40,5 @@ export const APP_RESPONSE = {
   badRequest,
   internalServerError,
   unauthorized,
+  expiredAccessToken,
 }

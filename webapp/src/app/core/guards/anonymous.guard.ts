@@ -5,24 +5,25 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
+import { ACCESS_TOKEN_KEY } from '@constants/user-key-session-storage.constant';
 import { AppService } from '@services/app.service';
-import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class AnonymousGuard implements CanActivate, CanActivateChild {
-  public constructor(private router: Router, private appService: AppService) {}
+  public constructor(private router: Router) {}
 
-  public canActivate(): Observable<boolean | UrlTree> {
+  public canActivate(): boolean | UrlTree {
     return this.verifyIsNotLoggedIn();
   }
 
-  public canActivateChild(): Observable<boolean | UrlTree> {
+  public canActivateChild(): boolean | UrlTree {
     return this.verifyIsNotLoggedIn();
   }
 
-  private verifyIsNotLoggedIn(): Observable<boolean | UrlTree> {
-    return this.appService
-      .getUserDetails()
-      .pipe(map((it) => !it || this.router.createUrlTree(['/'])));
+  private verifyIsNotLoggedIn(): boolean | UrlTree {
+    return (
+      !localStorage.getItem(ACCESS_TOKEN_KEY) ||
+      this.router.createUrlTree(['/'])
+    );
   }
 }

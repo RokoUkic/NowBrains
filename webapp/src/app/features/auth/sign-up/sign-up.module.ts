@@ -8,7 +8,7 @@ import { GenericLayoutComponent } from '@app-ui/generic-layout/generic-layout.co
 
 import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
-import { SignUpService } from './services/sign-up.service';
+import { RegisterService } from './services/register.service';
 
 @NgModule({
   declarations: [SignUpComponent],
@@ -21,6 +21,6 @@ import { SignUpService } from './services/sign-up.service';
     MatButtonModule,
     GenericLayoutComponent,
   ],
-  providers: [SignUpService],
+  providers: [RegisterService],
 })
 export class SignUpModule {}

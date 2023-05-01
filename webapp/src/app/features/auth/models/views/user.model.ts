@@ -1,6 +1,6 @@
-interface UserDetailsModel {
+export interface UserModel {
   id: string;
-  username: string;
   userLevel: string;
+  username: string;
   createdDate: Date;
 }

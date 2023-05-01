@@ -30,11 +30,12 @@
       </mat-form-field>
       <mat-form-field
         [class.error]="
-          formGroup.controls.level.errors && formGroup.controls.level.touched
+          formGroup.controls.userLevel.errors &&
+          formGroup.controls.userLevel.touched
         "
       >
         <mat-label>Level</mat-label>
-        <input matInput formControlName="level" />
+        <input matInput formControlName="userLevel" />
       </mat-form-field>
       <button
         mat-flat-button

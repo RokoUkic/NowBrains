@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 
-import { REFRESH_TOKEN_SECRET } from '../configs/config'
+import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from '../configs/config'
 import { ERROR_MESSAGE } from '../constants/error-message.constant'
 import { generateToken } from '../utils/generate-token.util'
 import { APP_RESPONSE } from '../utils/response.util'
@@ -19,8 +19,9 @@ export const login = async (req: Request, res: Response) => {
     try {
       const hashPassword = await UserUtils.findHashPassword(username)
 
-      bcrypt.compare(password, hashPassword, (err, result) => {
+      bcrypt.compare(password, hashPassword, async (err, result) => {
         if (result) {
+          const user = await UserUtils.findOne({ username })
           const { accessToken, refreshToken } = generateToken(username)
 
           UserUtils.updateOne({ username }, { refreshToken })
@@ -28,6 +29,7 @@ export const login = async (req: Request, res: Response) => {
           return APP_RESPONSE.success(res, {
             accessToken,
             refreshToken,
+            user,
           })
         } else {
           return APP_RESPONSE.unauthorized(res, ERROR_MESSAGE.PASSWORD_IS_NOT_CORRECT)
@@ -64,9 +66,12 @@ export const register = async (req: Request, res: Response) => {
           hashPassword,
         })
 
+        const user = await UserUtils.findOne({ username })
+
         return APP_RESPONSE.success(res, {
           accessToken,
           refreshToken,
+          user,
         })
       } catch (error) {
         return APP_RESPONSE.internalServerError(res, error)
@@ -76,7 +81,7 @@ export const register = async (req: Request, res: Response) => {
 }
 
 export const retrieveAccessToken = (req: Request, res: Response) => {
-  const refreshToken = req.headers['x-refresh-token']
+  const refreshToken = req.headers['st-refresh-token']
 
   try {
     const decodedRefreshToken = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET)

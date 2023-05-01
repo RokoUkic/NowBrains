@@ -5,24 +5,24 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
-import { AppService } from '@services/app.service';
-import { map, Observable } from 'rxjs';
+import { ACCESS_TOKEN_KEY } from '@constants/user-key-session-storage.constant';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-  public constructor(private router: Router, private appService: AppService) {}
+  public constructor(private router: Router) {}
 
-  public canActivate(): Observable<boolean | UrlTree> {
+  public canActivate(): boolean | UrlTree {
     return this.verifyIsLoggedIn();
   }
 
-  public canActivateChild(): Observable<boolean | UrlTree> {
+  public canActivateChild(): boolean | UrlTree {
     return this.verifyIsLoggedIn();
   }
 
-  private verifyIsLoggedIn(): Observable<boolean | UrlTree> {
-    return this.appService
-      .getUserDetails()
-      .pipe(map((it) => !!it || this.router.createUrlTree(['/login'])));
+  private verifyIsLoggedIn(): boolean | UrlTree {
+    return (
+      !!localStorage.getItem(ACCESS_TOKEN_KEY) ||
+      this.router.createUrlTree(['/login'])
+    );
   }
 }

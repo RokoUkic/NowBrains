@@ -13,7 +13,7 @@ export class AppStore {
     return this.innerUserDetails$.asObservable();
   }
 
-  public updateUserDetails(userDetails: UserDetailsModel | null): void {
+  public updateCurrentUser(userDetails: UserDetailsModel | null): void {
     this.innerUserDetails$.next(userDetails);
   }
 }
