@@ -1,7 +1,6 @@
+import { login, register, retrieveAccessToken } from '@controllers/auth.controller'
+import { verifyAccessToken } from '@middleware/auth.middleware'
 import express from 'express'
-
-import { login, register, retrieveAccessToken } from '../controllers/auth.controller'
-import { verifyAccessToken } from '../middlewares/auth.middleware'
 
 const authRouter = express.Router()
 

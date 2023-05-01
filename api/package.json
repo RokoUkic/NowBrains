@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts"
+    "start": "nodemon -e ts,js --exec ts-node -r tsconfig-paths/register ./src/index.ts",
+    "format": "npx prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "nodemon": "^2.0.15",
     "prettier": "^2.8.1",
     "ts-node": "^10.4.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^4.5.2"
   }
 }

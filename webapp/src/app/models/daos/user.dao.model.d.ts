@@ -1,6 +1,6 @@
 interface UserDAOModel {
-  _id: string;
-  username: string;
-  userLevel: string;
-  createdDate: Date;
+  _id: string
+  username: string
+  userLevel: string
+  createdDate: Date
 }

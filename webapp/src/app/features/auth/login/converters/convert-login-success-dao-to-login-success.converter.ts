@@ -1,7 +1,7 @@
-import { LoginSuccessModel } from '../models/views/login-success.model';
+import { LoginSuccessModel } from '../models/views/login-success.model'
 
 export function convertLoginSuccessDAOToLoginSuccess(
-  model: LoginSuccessDAOModel
+  model: LoginSuccessDAOModel,
 ): LoginSuccessModel {
   return {
     accessToken: model.accessToken,
@@ -12,5 +12,5 @@ export function convertLoginSuccessDAOToLoginSuccess(
       username: model.user.username,
       createdDate: model.user.createdDate,
     },
-  };
+  }
 }

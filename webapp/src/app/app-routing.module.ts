@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AnonymousGuard } from '@core/guards/anonymous.guard';
-import { AuthGuard } from '@core/guards/auth.guard';
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { AnonymousGuard } from '@core/guards/anonymous.guard'
+import { AuthGuard } from '@core/guards/auth.guard'
 
 const routes: Routes = [
   {
@@ -11,27 +11,22 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () =>
-      import('./features/auth/login/login.module').then((it) => it.LoginModule),
+    loadChildren: () => import('./features/auth/login/login.module').then((it) => it.LoginModule),
     canActivate: [AnonymousGuard],
   },
   {
     path: 'sign-up',
     loadChildren: () =>
-      import('./features/auth/sign-up/sign-up.module').then(
-        (it) => it.SignUpModule
-      ),
+      import('./features/auth/sign-up/sign-up.module').then((it) => it.SignUpModule),
     canActivate: [AnonymousGuard],
   },
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./features/dashboard/dashboard.module').then(
-        (it) => it.DashboardModule
-      ),
+      import('./features/dashboard/dashboard.module').then((it) => it.DashboardModule),
     canActivate: [AuthGuard],
   },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

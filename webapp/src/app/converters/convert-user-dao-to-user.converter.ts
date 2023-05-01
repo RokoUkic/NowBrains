@@ -4,5 +4,5 @@ export function convertUserDAOToUser(model: UserDAOModel): UserDetailsModel {
     userLevel: model.userLevel,
     username: model.username,
     createdDate: model.createdDate,
-  };
+  }
 }

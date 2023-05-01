@@ -1,13 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'
 
 export abstract class ApiAbstraction {
-  private readonly baseUrl = 'http://localhost:8080';
+  private readonly baseUrl = 'http://localhost:8080'
 
-  protected readonly path!: string;
+  protected readonly path!: string
 
   protected constructor(protected httpClient: HttpClient) {
-    this.path = this.baseUrl + this.definePath();
+    this.path = this.baseUrl + this.definePath()
   }
 
-  protected abstract definePath(): string;
+  protected abstract definePath(): string
 }

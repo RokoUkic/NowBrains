@@ -5,12 +5,10 @@ import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
 
-import { MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER } from './configs/config'
 import { routes } from './routes'
 
 const app = express()
 
-// If running a standalone mongo, use connection string below instead
 // const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/stock-trading?authSource=admin`
 // const mongoURL = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}/?retryWrites=true&w=majority`
 const mongoURL = `mongodb://localhost:27017/stock-trading`

@@ -1,4 +1,5 @@
-export enum STHttpStatusCode {
+export enum HttpStatusCode {
   Unauthorized = 401,
-  ExpiredToken = 498,
+  Conflict = 409,
+  ExpiredToken = 428,
 }

@@ -1,12 +1,12 @@
-@use "@angular/material" as mat;
-@use "colors";
+@use '@angular/material' as mat;
+@use 'colors';
 
 @include mat.core();
 
 html,
 body {
   height: 100%;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: colors.$secondary;
 }
 

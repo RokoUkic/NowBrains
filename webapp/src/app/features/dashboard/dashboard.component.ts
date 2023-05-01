@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { Component, OnInit } from '@angular/core'
+import { LoadingService } from '@services/loading.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loadingService: LoadingService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    // Testing api calling
     this.http.get('http://localhost:8080/test').subscribe({
       next: () => {
-        console.log();
+        console.log()
       },
-    });
+    })
   }
 }

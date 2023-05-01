@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AuthGuard } from './guards/auth.guard';
-import { AnonymousGuard } from './guards/anonymous.guard';
-import { AuthApi } from './apis/auth.api';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpRequestHeaderInterceptor } from './interceptors/http-request-header.interceptor';
-import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { AuthGuard } from './guards/auth.guard'
+import { AnonymousGuard } from './guards/anonymous.guard'
+import { AuthApi } from './apis/auth.api'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpRequestHeaderInterceptor } from './interceptors/http-request-header.interceptor'
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor'
 
 @NgModule({
   declarations: [],

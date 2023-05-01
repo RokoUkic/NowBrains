@@ -11,19 +11,13 @@
     <h2>Log in to Stock Trading</h2>
     <form [formGroup]="formGroup" (submit)="submit()">
       <mat-form-field
-        [class.error]="
-          formGroup.controls.username.errors &&
-          formGroup.controls.username.touched
-        "
+        [class.error]="formGroup.controls.username.errors && formGroup.controls.username.touched"
       >
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" />
       </mat-form-field>
       <mat-form-field
-        [class.error]="
-          formGroup.controls.password.errors &&
-          formGroup.controls.password.touched
-        "
+        [class.error]="formGroup.controls.password.errors && formGroup.controls.password.touched"
       >
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" type="password" />

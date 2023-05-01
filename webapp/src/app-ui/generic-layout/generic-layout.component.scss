@@ -1,5 +1,5 @@
-@use "spacings";
-@use "responsive";
+@use 'spacings';
+@use 'responsive';
 
 .container {
   display: grid;
@@ -15,7 +15,7 @@
   }
 }
 
-@include responsive.media-down("sm") {
+@include responsive.media-down('sm') {
   .container {
     width: unset;
     margin: spacings.$sm spacings.$sm spacings.$md spacings.$sm;

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-generic-layout',
@@ -15,5 +15,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./generic-layout.component.scss'],
 })
 export class GenericLayoutComponent {
-  @Input() width?: number;
+  @Input() width?: number
 }

@@ -1,7 +1,7 @@
-import { UserModel } from '../../../models/views/user.model';
+import { UserModel } from '../../../models/views/user.model'
 
 export interface LoginSuccessModel {
-  accessToken: string;
-  refreshToken: string;
-  user: UserModel;
+  accessToken: string
+  refreshToken: string
+  user: UserModel
 }

@@ -1,7 +1,7 @@
-import { RegisterSuccessModel } from '../models/views/register-success.model';
+import { RegisterSuccessModel } from '../models/views/register-success.model'
 
 export function convertRegisterSuccessDAOToRegisterSuccess(
-  model: RegisterSuccessDAOModel
+  model: RegisterSuccessDAOModel,
 ): RegisterSuccessModel {
   return {
     accessToken: model.accessToken,
@@ -12,5 +12,5 @@ export function convertRegisterSuccessDAOToRegisterSuccess(
       userLevel: model.user.userLevel,
       createdDate: model.user.createdDate,
     },
-  };
+  }
 }

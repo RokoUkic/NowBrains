@@ -1,7 +1,7 @@
-@use "spacings";
-@use "colors";
-@use "responsive";
-@use "box-shadow";
+@use 'spacings';
+@use 'colors';
+@use 'responsive';
+@use 'box-shadow';
 
 .mat-form-field {
   border: 2px solid #5d6584;
@@ -113,7 +113,7 @@ snack-bar-container {
   @include box-shadow.light;
 }
 
-@include responsive.media-down("sm") {
+@include responsive.media-down('sm') {
   .mat-table {
     overflow: auto;
     display: block;

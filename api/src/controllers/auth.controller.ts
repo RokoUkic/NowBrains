@@ -1,12 +1,12 @@
+import { REFRESH_TOKEN_SECRET } from '@configs/config'
+import { ERROR_MESSAGE } from '@constants/error-message.constant'
+import { REFRESH_TOKEN_KEY } from '@constants/user-key-storage.constant'
+import { generateToken } from '@utils/generate-token.util'
+import { APP_RESPONSE } from '@utils/response.util'
+import { UserUtils } from '@utils/user.util'
 import bcrypt from 'bcrypt'
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-
-import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from '../configs/config'
-import { ERROR_MESSAGE } from '../constants/error-message.constant'
-import { generateToken } from '../utils/generate-token.util'
-import { APP_RESPONSE } from '../utils/response.util'
-import { UserUtils } from '../utils/user.util'
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -32,17 +32,17 @@ export const login = async (req: Request, res: Response) => {
             user,
           })
         } else {
-          return APP_RESPONSE.unauthorized(res, ERROR_MESSAGE.PASSWORD_IS_NOT_CORRECT)
+          return APP_RESPONSE.conflict(res, ERROR_MESSAGE.PASSWORD_IS_NOT_CORRECT)
         }
       })
     } catch (err) {
-      throw new Error(ERROR_MESSAGE.UNAUTHORIZED)
+      throw new Error(ERROR_MESSAGE.CONFLICT)
     }
   } catch (error) {
-    if (error.message === ERROR_MESSAGE.UNAUTHORIZED) {
-      return APP_RESPONSE.unauthorized(res, error)
+    if (error.message === ERROR_MESSAGE.CONFLICT) {
+      return APP_RESPONSE.conflict(res, error.message)
     } else {
-      return APP_RESPONSE.internalServerError(res, error)
+      return APP_RESPONSE.internalServerError(res, error.message)
     }
   }
 }
@@ -74,14 +74,14 @@ export const register = async (req: Request, res: Response) => {
           user,
         })
       } catch (error) {
-        return APP_RESPONSE.internalServerError(res, error)
+        return APP_RESPONSE.conflict(res, error.message)
       }
     })
   })
 }
 
 export const retrieveAccessToken = (req: Request, res: Response) => {
-  const refreshToken = req.headers['st-refresh-token']
+  const refreshToken = req.headers[REFRESH_TOKEN_KEY]
 
   try {
     const decodedRefreshToken = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET)
@@ -96,10 +96,10 @@ export const retrieveAccessToken = (req: Request, res: Response) => {
         accessToken,
         refreshToken: newRefreshToken,
       })
-    } catch (err) {
-      return APP_RESPONSE.internalServerError(res)
+    } catch (error) {
+      return APP_RESPONSE.internalServerError(res, error.message)
     }
-  } catch (err) {
+  } catch (error) {
     return APP_RESPONSE.unauthorized(res, ERROR_MESSAGE.UNAUTHORIZED)
   }
 }

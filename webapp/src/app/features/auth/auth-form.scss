@@ -1,6 +1,6 @@
-@use "spacings";
-@use "responsive";
-@use "colors";
+@use 'spacings';
+@use 'responsive';
+@use 'colors';
 
 app-generic-layout {
   &.mobile {
@@ -41,7 +41,7 @@ app-generic-layout {
   }
 }
 
-@include responsive.media-down("sm") {
+@include responsive.media-down('sm') {
   app-generic-layout {
     width: unset;
 

@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { CoreModule } from './core/core.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
